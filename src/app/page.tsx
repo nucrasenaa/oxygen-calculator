@@ -1,21 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { Suspense, useEffect } from "react";
+import { useEffect, useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import OxygenCalculator from "@/components/OxygenCalculator";
 
-// Create a client component to handle search params
 function OxygenCalculatorWithParams() {
+  const searchParams = useSearchParams();
   const [conversionFactor, setConversionFactor] = useState<string>("");
-  
+
   useEffect(() => {
-    // Get URL search params in client component
-    const params = new URLSearchParams(window.location.search);
-    const factor = params.get("conversionFactor");
+    const factor = searchParams.get("conversionFactor");
     if (factor) {
       setConversionFactor(factor);
     }
-  }, []);
+  }, [searchParams]);
 
   return <OxygenCalculator initialConversionFactor={conversionFactor} />;
 }

@@ -20,7 +20,6 @@ interface OxygenCalculatorProps {
 
 export default function OxygenCalculator({ initialConversionFactor }: OxygenCalculatorProps) {
   const [flowRate, setFlowRate] = useState<string>("");
-  const [conversionFactor, setConversionFactor] = useState<string>(initialConversionFactor || "");
   const [cylinderPressure, setCylinderPressure] = useState<string>("");
   const [duration, setDuration] = useState<number | null>(null);
   const [selectedTank, setSelectedTank] = useState<TankSize | null>(null);
@@ -33,7 +32,6 @@ export default function OxygenCalculator({ initialConversionFactor }: OxygenCalc
       );
       if (tank) {
         setSelectedTank(tank);
-        setConversionFactor(tank.factor.toString());
       }
     }
   }, [initialConversionFactor]);
@@ -42,18 +40,17 @@ export default function OxygenCalculator({ initialConversionFactor }: OxygenCalc
     const tank = tankSizes.find((t) => t.name === tankName);
     if (tank) {
       setSelectedTank(tank);
-      setConversionFactor(tank.factor.toString());
     }
   };
 
   const calculateDuration = () => {
-    if (!flowRate || !conversionFactor || !cylinderPressure) {
+    if (!flowRate || !selectedTank || !cylinderPressure) {
       setDuration(null);
       return;
     }
 
     const flow = parseFloat(flowRate);
-    const factor = parseFloat(conversionFactor);
+    const factor = selectedTank.factor;
     const pressure = parseFloat(cylinderPressure);
 
     if (flow <= 0) {
@@ -80,6 +77,7 @@ export default function OxygenCalculator({ initialConversionFactor }: OxygenCalc
             className="w-full p-2 border border-gray-300 rounded-md"
             value={selectedTank?.name || ""}
             onChange={(e) => handleTankSelection(e.target.value)}
+            required
           >
             <option value="" disabled>
               เลือกขนาดถัง
@@ -103,21 +101,6 @@ export default function OxygenCalculator({ initialConversionFactor }: OxygenCalc
             min="0.1"
             value={flowRate}
             onChange={(e) => setFlowRate(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label htmlFor="conversionFactor" className="block text-sm font-medium">
-            Conversion Factor
-          </label>
-          <input
-            id="conversionFactor"
-            type="number"
-            step="0.01"
-            value={conversionFactor}
-            onChange={(e) => setConversionFactor(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md"
             required
           />
