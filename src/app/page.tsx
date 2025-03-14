@@ -25,10 +25,10 @@ export default function Home() {
         <h1 className="text-2xl md:text-4xl font-bold text-center mb-4">
           คำนวณเวลาการใช้งานถังออกซิเจน
         </h1>
-        <p className="text-center text-gray-600 mb-8 max-w-2xl">
+        {/* <p className="text-center text-gray-600 mb-8 max-w-2xl">
           แอปพลิเคชันนี้ช่วยให้คุณคำนวณระยะเวลาการใช้งานถังออกซิเจนขนาดต่างๆ ได้อย่างรวดเร็วและแม่นยำ 
           โดยคำนวณจากอัตราการใช้ออกซิเจน (LPM) และแรงดันออกซิเจนในถัง (PSI) สำหรับถังขนาด D, E, M และ H cylinder
-        </p>
+        </p> */}
         
         <Suspense fallback={<div>Loading...</div>}>
           <OxygenCalculatorWithParams />
