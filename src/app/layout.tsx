@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Script from "next/script";
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,6 +49,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-gray-100 flex flex-col min-h-screen`}>
         <div className="flex-grow">
           {children}
+          <Analytics />
         </div>
         <Footer />
         <Script id="structured-data" type="application/ld+json">
