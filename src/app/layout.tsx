@@ -4,7 +4,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 import { Analytics } from '@vercel/analytics/next';
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -50,6 +50,7 @@ export default function RootLayout({
         <div className="flex-grow">
           {children}
           <Analytics />
+          <SpeedInsights/>
         </div>
         <Footer />
         <Script id="structured-data" type="application/ld+json">
