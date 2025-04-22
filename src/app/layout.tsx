@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://oxygen-calculator.vercel.app/og-image.jpg",
+        url: "https://oxygen-calculator.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Oxygen Calculator Preview",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "คำนวณเวลาการใช้งานถังออกซิเจน | Oxygen Tank Calculator",
     description: "แอปพลิเคชันคำนวณเวลาการใช้งานถังออกซิเจนฟรี สำหรับคำนวณระยะเวลาการใช้งานถังออกซิเจน",
-    images: ["https://oxygen-calculator.vercel.app/og-image.jpg"],
+    images: ["https://oxygen-calculator.vercel.app/og-image.png"],
   },
 };
 
